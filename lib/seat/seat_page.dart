@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/seat/widgets/seat_choose.dart';
+import 'package:flutter_train_app/seat/widgets/seat_choose_button.dart';
 import 'package:flutter_train_app/seat/widgets/selected_station.dart';
 
-class SeatPage extends StatelessWidget {
+class SeatPage extends StatefulWidget {
   final String departureStation;
   final String arrivalStation;
 
@@ -10,6 +11,15 @@ class SeatPage extends StatelessWidget {
     required this.departureStation,
     required this.arrivalStation,
   });
+
+  @override
+  State<SeatPage> createState() => _SeatPageState();
+}
+
+class _SeatPageState extends State<SeatPage> {
+
+  int? selectedRow;
+  int? selectedCol;
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +34,14 @@ class SeatPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SelectedStation(
-                departureStation: departureStation,
-                arrivalStation: arrivalStation,
+                departureStation: widget.departureStation,
+                arrivalStation: widget.arrivalStation,
               ),
               SizedBox(height: 16),
               //좌석선택
-              SeatChoose(),
+              SeatChoose(selectedCol, selectedRow),
               SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  // 버튼 클릭 시 수행할 작업
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                  backgroundColor: Colors.purple,
-                ),
-                child: Text('Button'),
-              ),
+              SeatChooseButton(selectedCol, selectedRow)
             ],
           ),
         ),
