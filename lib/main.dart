@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
      theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.pinkAccent),
+          seedColor: Colors.purple),
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white70,
       ),

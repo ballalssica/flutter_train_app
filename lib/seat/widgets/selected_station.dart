@@ -65,6 +65,7 @@ class SelectedStation extends StatelessWidget{
                   borderRadius: BorderRadius.circular(5)
                 ),
               ),
+              SizedBox(width: 3,),
               Text('선택됨'),
               SizedBox(width: 10,),
               Container(
@@ -75,6 +76,7 @@ class SelectedStation extends StatelessWidget{
                   borderRadius: BorderRadius.circular(5)
                 ),
               ),
+              SizedBox(width: 3,),
               Text('선택가능')
             ],
           )
