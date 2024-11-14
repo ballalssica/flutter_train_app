@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/seat/widgets/selected_station.dart';
 
 class SeatPage extends StatelessWidget {
   final String departureStation;
@@ -19,19 +20,40 @@ class SeatPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '출발역: $departureStation',
-              style: TextStyle(fontSize: 20),
+            SelectedStation(
+              departureStation: departureStation,
+              arrivalStation: arrivalStation,
             ),
-            SizedBox(height: 10),
-            Text(
-              '도착역: $arrivalStation',
-              style: TextStyle(fontSize: 20),
+            SizedBox(height: 16),
+            Container(
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Text(
+                  'Container Content',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
             ),
-            // 좌석 선택 기능을 이곳에 추가할 수 있습니다.
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // 버튼 클릭 시 수행할 작업
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                backgroundColor: Colors.purple,
+              ),
+              child: Text('Button'),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
