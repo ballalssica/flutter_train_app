@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 
-class SeatChoose extends StatelessWidget {
+class SeatChoose extends StatefulWidget {
+  final int? selectedCol;
+  final String? selectedRow;
+
   SeatChoose(this.selectedCol, this.selectedRow);
 
+  @override
+  _SeatChooseState createState() => _SeatChooseState();
+}
+
+class _SeatChooseState extends State<SeatChoose> {
   int? selectedCol;
   int? selectedRow;
- 
+
+  @override
+  void initState() {
+    super.initState();
+    selectedCol = widget.selectedCol;
+    selectedRow = int.tryParse(widget.selectedRow ?? ''); // String to int 변환
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -18,47 +33,12 @@ class SeatChoose extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SeatBoxHeader(), 
-                SizedBox(height: 10,),
-                row(1),
-                SizedBox(height: 10,),
-                row(2),
-                SizedBox(height: 10,),
-                row(3),
-                SizedBox(height: 10,),
-                row(4),
-                SizedBox(height: 10,),
-                row(5),
-                SizedBox(height: 10,),
-                row(6),
-                SizedBox(height: 10,),
-                row(7),
-                SizedBox(height: 10,),
-                row(8),
-                SizedBox(height: 10,),
-                row(9),
-                SizedBox(height: 10,),
-                row(10),
-                SizedBox(height: 10,),
-                row(11),
-                SizedBox(height: 10,),
-                row(12),
-                SizedBox(height: 10,),
-                row(13),
-                SizedBox(height: 10,),
-                row(14),
-                SizedBox(height: 10,),
-                row(15),
-                SizedBox(height: 10,),
-                row(16),
-                SizedBox(height: 10,),
-                row(17),
-                SizedBox(height: 10,),
-                row(18),
-                SizedBox(height: 10,),
-                row(19),
-                SizedBox(height: 10,),
-                row(20),
+                SeatBoxHeader(),
+                SizedBox(height: 10),
+                for (int i = 1; i <= 20; i++) ...[
+                  row(i),
+                  SizedBox(height: 10),
+                ],
               ],
             ),
           ),
@@ -67,50 +47,57 @@ class SeatChoose extends StatelessWidget {
     );
   }
 
-// SeatBox Row
-  Widget row(int rowNum, int colNum) {
+  // SeatBox Row
+  Widget row(int rowNum) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    seat(),
-                    SizedBox(width: 5,),
-                    seat(),
-                    SizedBox(width: 5,),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      child: Center(
-                        child: Text(
-                          '$rowNum',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ),
-                      ),
-                    SizedBox(width: 5,),
-                    seat(),
-                    SizedBox(width: 5,),
-                    seat(),
-                  ],
-                ),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          seat(rowNum, 1, 'A'),
+          SizedBox(width: 5),
+          seat(rowNum, 2, 'B'),
+          SizedBox(width: 5),
+          Container(
+            width: 40,
+            height: 40,
+            child: Center(
+              child: Text(
+                '$rowNum',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          SizedBox(width: 5),
+          seat(rowNum, 3, 'C'),
+          SizedBox(width: 5),
+          seat(rowNum, 4, 'D'),
+        ],
+      ),
     );
   }
-}
 
-
-// 좌석위젯
-Widget seat() {
-  return Container(
-    width: 40,
-    height: 40,
-    decoration: BoxDecoration(
-      color: Colors.black12,
-      borderRadius: BorderRadius.circular(10),
-    ),
-  );
+  // 좌석 위젯
+  Widget seat(int rowNum, int colNum, String colLabel) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedRow = rowNum;
+          selectedCol = colNum;
+        });
+      },
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: (selectedRow == rowNum && selectedCol == colNum)
+              ? Colors.purple
+              : Colors.grey,
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+  }
 }
 
 // SeatBoxHeader
@@ -125,24 +112,24 @@ class SeatBoxHeader extends StatelessWidget {
           height: 30,
           child: Center(child: Text('A')),
         ),
-        SizedBox(width: 5,),
+        SizedBox(width: 5),
         Container(
           width: 40,
           height: 30,
           child: Center(child: Text('B')),
         ),
-        SizedBox(width: 5,),
+        SizedBox(width: 5),
         Container(
           width: 40,
           height: 30,
         ),
-        SizedBox(width: 5,),
+        SizedBox(width: 5),
         Container(
           width: 40,
           height: 30,
           child: Center(child: Text('C')),
         ),
-        SizedBox(width: 5,),
+        SizedBox(width: 5),
         Container(
           width: 40,
           height: 30,
@@ -152,6 +139,3 @@ class SeatBoxHeader extends StatelessWidget {
     );
   }
 }
-
-
-

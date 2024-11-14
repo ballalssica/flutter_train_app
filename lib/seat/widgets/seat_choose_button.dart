@@ -5,7 +5,7 @@ class SeatChooseButton extends StatelessWidget {
   SeatChooseButton(this.selectedCol, this.selectedRow);
 
   int? selectedCol;
-  int? selectedRow;
+  String? selectedRow;
 
   @override
   Widget build(BuildContext context) {
