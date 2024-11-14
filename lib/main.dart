@@ -12,6 +12,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
      
+     //모드설정테스트
+     themeMode: ThemeMode.light,
+      // themeMode: ThemeMode.dark,
+     
+     //라이트모드 테마설정
+     theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.pinkAccent),
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.white70,
+      ),
+      
+      //다크모드는 나중에 해야지
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+      ),
+    
+
       home: HomePage(),
     );
   }
