@@ -2,9 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/home/widgets/seat_selection_button.dart';
 import 'package:flutter_train_app/home/widgets/station_selection.dart';
 
-class HomePage extends StatelessWidget {
-  final String departureStation = '서울'; // 예시 출발역
-  final String arrivalStation = '부산'; // 예시 도착역
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String selectedDepartureStation = '출발역 선택';
+  String selectedArrivalStation = '도착역 선택';
+
+  void updateStations(String departure, String arrival) {
+    setState(() {
+      selectedDepartureStation = departure;
+      selectedArrivalStation = arrival;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +30,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            StationSelection(), // StationSelection 위젯 추가
-            SizedBox(height: 16), // 위젯 간격
-            SeatSelectionButton( ), // SeatSelectionButton 위젯 추가
+            StationSelection(
+              onStationSelected: updateStations, // 출발역과 도착역 선택값을 업데이트
+            ),
+            SizedBox(height: 16),
+            SeatSelectionButton(
+              departureStation: selectedDepartureStation,
+              arrivalStation: selectedArrivalStation,
+            ),
           ],
         ),
       ),

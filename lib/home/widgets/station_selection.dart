@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/station_list/station_list_page.dart';
 
 class StationSelection extends StatefulWidget {
+  final Function(String, String) onStationSelected; // 출발역과 도착역을 전달하는 콜백 함수
+
+  StationSelection({required this.onStationSelected});
+
   @override
   _StationSelectionState createState() => _StationSelectionState();
 }
@@ -26,6 +30,9 @@ class _StationSelectionState extends State<StationSelection> {
           selectedArrivalStation = result; // 도착역 업데이트
         }
       });
+
+      // 콜백 함수를 호출하여 선택된 출발역과 도착역을 전달
+      widget.onStationSelected(selectedDepartureStation, selectedArrivalStation);
     }
   }
 
