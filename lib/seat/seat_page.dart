@@ -17,9 +17,16 @@ class SeatPage extends StatefulWidget {
 }
 
 class _SeatPageState extends State<SeatPage> {
-
   int? selectedCol;
   String? selectedRow;
+
+  // Callback 함수로 SeatChoose에서 좌석 선택 시 호출
+  void onSeatSelected(int col, String row) {
+    setState(() {
+      selectedCol = col;
+      selectedRow = row;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +45,10 @@ class _SeatPageState extends State<SeatPage> {
                 arrivalStation: widget.arrivalStation,
               ),
               SizedBox(height: 16),
-              //좌석선택
-              SeatChoose(selectedCol, selectedRow),
+              // 좌석 선택 - Callback 함수 추가
+              SeatChoose(onSeatSelected: onSeatSelected),
               SizedBox(height: 16),
-              SeatChooseButton(selectedCol, selectedRow)
+              SeatChooseButton(selectedCol, selectedRow),
             ],
           ),
         ),
@@ -49,4 +56,3 @@ class _SeatPageState extends State<SeatPage> {
     );
   }
 }
-

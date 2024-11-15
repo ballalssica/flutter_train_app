@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SeatChoose extends StatefulWidget {
-  final int? selectedCol;
-  final String? selectedRow;
+  final Function(int, String) onSeatSelected; // 콜백 함수 추가
 
-  SeatChoose(this.selectedCol, this.selectedRow);
+  SeatChoose({required this.onSeatSelected});
 
   @override
   _SeatChooseState createState() => _SeatChooseState();
@@ -13,13 +12,6 @@ class SeatChoose extends StatefulWidget {
 class _SeatChooseState extends State<SeatChoose> {
   int? selectedCol;
   int? selectedRow;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedCol = widget.selectedCol;
-    selectedRow = int.tryParse(widget.selectedRow ?? ''); // String to int 변환
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +77,8 @@ class _SeatChooseState extends State<SeatChoose> {
           selectedRow = rowNum;
           selectedCol = colNum;
         });
+        // 콜백 함수 호출
+        widget.onSeatSelected(colNum, colLabel);
       },
       child: Container(
         width: 40,

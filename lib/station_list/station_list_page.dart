@@ -52,5 +52,3 @@ class StationListPage extends StatelessWidget {
     );
   }
 }
-
-

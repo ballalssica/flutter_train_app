@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SeatChooseButton extends StatelessWidget {
   final int? selectedCol;
   final String? selectedRow;
 
-  SeatChooseButton(this.selectedCol, this.selectedRow);
+  SeatChooseButton(this.selectedCol, this.selectedRow); // 생성자에서 값을 받도록 설정
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +15,23 @@ class SeatChooseButton extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           onPressed: () {
-            // 버튼 클릭 시 AlertDialog 표시
-            showDialog(
+            showCupertinoDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('좌석 확인'),
-                  content: Text(
-                    '선택한 좌석: Row $selectedRow, Column $selectedCol',
-                    style: TextStyle(fontSize: 16),
-                  ),
+              builder: (context) {
+                return CupertinoAlertDialog(
+                  title: Text('예매 하시겠습니까?'),
+                  content: Text('좌석 : $selectedRow - $selectedCol'),
                   actions: [
-                    TextButton(
+                    CupertinoDialogAction(
+                      isDefaultAction: true,
                       onPressed: () {
-                        Navigator.of(context).pop(); // AlertDialog 닫기
+                        Navigator.of(context).pop();
                       },
+                      child: Text('취소'),
+                    ),
+                    CupertinoDialogAction(
+                      isDestructiveAction: true,
+                      onPressed: () {},
                       child: Text('확인'),
                     ),
                   ],
@@ -37,14 +40,14 @@ class SeatChooseButton extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(vertical: 16),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
             backgroundColor: Colors.purple,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10), // 둥근 모서리 설정
             ),
           ),
           child: Text(
-            '예매 하기',
+            '예매 하기 ',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
