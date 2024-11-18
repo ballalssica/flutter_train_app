@@ -15,11 +15,13 @@ class _SeatChooseState extends State<SeatChoose> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Expanded(
       child: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          color: Colors.white,
+          color: isDarkMode ? Colors.black : Colors.white,
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Column(

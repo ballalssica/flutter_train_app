@@ -17,17 +17,19 @@ class StationListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        iconTheme: IconThemeData(color: isDarkMode ? Colors.white : Colors.black),
         title: Text(
           '출발역',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: isDarkMode ? Colors.white : Colors.black,),
         ),
         centerTitle: true,
       ),
       body: Container(
-        color: Colors.white,
+        color: isDarkMode ? Colors.black : Colors.white,
         child: ListView.builder(
           padding: EdgeInsets.only(top: 10),
           itemCount: stationList.length,

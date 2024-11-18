@@ -13,6 +13,8 @@ class SelectedStation extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       child: Column(
         children: [
@@ -35,7 +37,7 @@ class SelectedStation extends StatelessWidget{
               SizedBox(width: 8),
               Icon(
                 Icons.arrow_circle_right_outlined,
-                color: Colors.black,
+                color: isDarkMode ? Colors.white : Colors.black,
                 size: 30, // 아이콘 크기 조절
               ),
               SizedBox(width: 8),

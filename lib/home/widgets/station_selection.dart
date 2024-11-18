@@ -38,12 +38,14 @@ class _StationSelectionState extends State<StationSelection> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    
     return Container(
       width: double.infinity,
       height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: isDarkMode ? Colors.grey[800] : Colors.white,
       ),
       child: Row(
         children: [
