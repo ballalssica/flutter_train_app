@@ -15,16 +15,26 @@ class StationListPage extends StatelessWidget {
     '부산',
   ];
 
+  final String? excludeStation;
+
+  StationListPage({this.excludeStation});
+
   @override
   Widget build(BuildContext context) {
+    // 출발역을 제외한 필터링된 리스트 생성
+    final filteredStationList = stationList
+        .where((station) => station != excludeStation)
+        .toList();
+
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
         iconTheme: IconThemeData(color: isDarkMode ? Colors.white : Colors.black),
         title: Text(
-          '출발역',
-          style: TextStyle(color: isDarkMode ? Colors.white : Colors.black,),
+          '역 선택',
+          style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
         ),
         centerTitle: true,
       ),
@@ -32,7 +42,7 @@ class StationListPage extends StatelessWidget {
         color: isDarkMode ? Colors.black : Colors.white,
         child: ListView.builder(
           padding: EdgeInsets.only(top: 10),
-          itemCount: stationList.length,
+          itemCount: filteredStationList.length, 
           itemBuilder: (context, index) {
             return Container(
               height: 50,
@@ -46,7 +56,7 @@ class StationListPage extends StatelessWidget {
               ),
               child: ListTile(
                 title: Text(
-                  stationList[index],
+                  filteredStationList[index], 
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 18,
@@ -54,7 +64,8 @@ class StationListPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context, stationList[index]); // 선택된 항목 반환
+                  // 선택된 항목 반환
+                  Navigator.pop(context, filteredStationList[index]);
                 },
                 dense: true,
                 contentPadding: EdgeInsets.symmetric(horizontal: 16),
