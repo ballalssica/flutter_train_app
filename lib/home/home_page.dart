@@ -25,20 +25,23 @@ class _HomePageState extends State<HomePage> {
         title: Text('기차예매'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            StationSelection(
-              onStationSelected: updateStations, // 출발역과 도착역 선택값을 업데이트
-            ),
-            SizedBox(height: 16),
-            SeatSelectionButton(
-              departureStation: selectedDepartureStation,
-              arrivalStation: selectedArrivalStation,
-            ),
-          ],
+      body: Container(
+        color: Colors.grey[200],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              StationSelection(
+                onStationSelected: updateStations, // 출발역과 도착역 선택값을 업데이트
+              ),
+              SizedBox(height: 20),
+              SeatSelectionButton(
+                departureStation: selectedDepartureStation,
+                arrivalStation: selectedArrivalStation,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -42,7 +42,6 @@ class _StationSelectionState extends State<StationSelection> {
       width: double.infinity,
       height: 200,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
@@ -56,8 +55,9 @@ class _StationSelectionState extends State<StationSelection> {
                   Text(
                     '출발역',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       color: Colors.grey,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 5),
@@ -66,7 +66,7 @@ class _StationSelectionState extends State<StationSelection> {
                     child: Text(
                       selectedDepartureStation, // 선택된 출발역 이름 표시
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -76,9 +76,9 @@ class _StationSelectionState extends State<StationSelection> {
             ),
           ),
           Container(
-            width: 1,
+            width: 2,
             height: 50,
-            color: Colors.grey,
+            color: Colors.grey[400],
           ),
           Expanded(
             child: Center(
@@ -88,8 +88,9 @@ class _StationSelectionState extends State<StationSelection> {
                   Text(
                     '도착역',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       color: Colors.grey,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 5),
@@ -98,7 +99,7 @@ class _StationSelectionState extends State<StationSelection> {
                     child: Text(
                       selectedArrivalStation, // 선택된 도착역 이름 표시
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

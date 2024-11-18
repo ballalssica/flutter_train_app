@@ -10,7 +10,7 @@ class SeatChooseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
@@ -43,14 +43,15 @@ class SeatChooseButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
             backgroundColor: Colors.purple,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10), // 둥근 모서리 설정
+              borderRadius: BorderRadius.circular(20),
             ),
           ),
           child: Text(
             '예매 하기 ',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

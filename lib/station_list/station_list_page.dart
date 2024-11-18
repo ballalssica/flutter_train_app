@@ -20,20 +20,36 @@ class StationListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('출발역'),
+        title: Text(
+          '출발역',
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         color: Colors.white,
-        child: ListView.separated(
-          padding: EdgeInsets.only(top: 10), 
-          itemCount: stationList.length, 
+        child: ListView.builder(
+          padding: EdgeInsets.only(top: 10),
+          itemCount: stationList.length,
           itemBuilder: (context, index) {
             return Container(
-              height: 35, 
+              height: 50,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey[300]!,
+                    width: 1.0,
+                  ),
+                ),
+              ),
               child: ListTile(
                 title: Text(
                   stationList[index],
-                  textAlign: TextAlign.left, 
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 onTap: () {
                   Navigator.pop(context, stationList[index]); // 선택된 항목 반환
@@ -43,10 +59,6 @@ class StationListPage extends StatelessWidget {
               ),
             );
           },
-          separatorBuilder: (context, index) => Divider(
-            color: Colors.grey.shade300, 
-            thickness: 1,
-          ),
         ),
       ),
     );

@@ -30,13 +30,15 @@ class SeatSelectionButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10), // 둥근 모서리 설정
+            borderRadius: BorderRadius.circular(20), // 둥근 모서리 설정
           ),
         ),
         child: Text(
           '좌석선택',
           style: TextStyle(
             color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

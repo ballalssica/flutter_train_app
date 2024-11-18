@@ -26,7 +26,7 @@ class SelectedStation extends StatelessWidget{
                   departureStation,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 30,
                     color: Colors.purple,
                     fontWeight: FontWeight.bold,
                   ),
@@ -44,7 +44,7 @@ class SelectedStation extends StatelessWidget{
                   arrivalStation,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 30,
                     color: Colors.purple,
                     fontWeight: FontWeight.bold,
                   ),
@@ -58,25 +58,25 @@ class SelectedStation extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 20,
-                height: 20,
+                width: 24,
+                height: 24,
                 decoration: BoxDecoration(
                   color: Colors.purple,
-                  borderRadius: BorderRadius.circular(5)
+                  borderRadius: BorderRadius.circular(8)
                 ),
               ),
-              SizedBox(width: 3,),
+              SizedBox(width: 4,),
               Text('선택됨'),
-              SizedBox(width: 10,),
+              SizedBox(width: 20,),
               Container(
-                width: 20,
-                height: 20,
+                width: 24,
+                height: 24,
                 decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(5)
+                  color: Colors.grey[300]!,
+                  borderRadius: BorderRadius.circular(8)
                 ),
               ),
-              SizedBox(width: 3,),
+              SizedBox(width: 4,),
               Text('선택가능')
             ],
           )

@@ -26,7 +26,7 @@ class _SeatChooseState extends State<SeatChoose> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SeatBoxHeader(),
-                SizedBox(height: 10),
+                SizedBox(height: 8),
                 for (int i = 1; i <= 20; i++) ...[
                   row(i),
                   SizedBox(height: 10),
@@ -47,12 +47,12 @@ class _SeatChooseState extends State<SeatChoose> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           seat(rowNum, 1, 'A'),
-          SizedBox(width: 5),
+          SizedBox(width: 4),
           seat(rowNum, 2, 'B'),
-          SizedBox(width: 5),
+          SizedBox(width: 4),
           Container(
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
             child: Center(
               child: Text(
                 '$rowNum',
@@ -60,9 +60,9 @@ class _SeatChooseState extends State<SeatChoose> {
               ),
             ),
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 4),
           seat(rowNum, 3, 'C'),
-          SizedBox(width: 5),
+          SizedBox(width: 4),
           seat(rowNum, 4, 'D'),
         ],
       ),
@@ -78,16 +78,16 @@ class _SeatChooseState extends State<SeatChoose> {
           selectedCol = colNum;
         });
         // 콜백 함수 호출
-        widget.onSeatSelected(colNum, colLabel);
+        widget.onSeatSelected(rowNum, colLabel);
       },
       child: Container(
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
         decoration: BoxDecoration(
           color: (selectedRow == rowNum && selectedCol == colNum)
               ? Colors.purple
-              : Colors.grey,
-          borderRadius: BorderRadius.circular(10),
+              : Colors.grey[300]!,
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );
@@ -102,32 +102,52 @@ class SeatBoxHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 40,
-          height: 30,
-          child: Center(child: Text('A')),
+          width: 50,
+          height: 50,
+          child: Center(
+            child: Text(
+              'A',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
         ),
-        SizedBox(width: 5),
+        SizedBox(width: 4),
         Container(
-          width: 40,
-          height: 30,
-          child: Center(child: Text('B')),
+          width: 50,
+          height: 50,
+          child: Center(
+            child: Text(
+              'B',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
         ),
-        SizedBox(width: 5),
+        SizedBox(width: 4),
         Container(
-          width: 40,
-          height: 30,
+          width: 50,
+          height: 50,
         ),
-        SizedBox(width: 5),
+        SizedBox(width: 4),
         Container(
-          width: 40,
-          height: 30,
-          child: Center(child: Text('C')),
+          width: 50,
+          height: 50,
+          child: Center(
+            child: Text(
+              'C',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
         ),
-        SizedBox(width: 5),
+        SizedBox(width: 4),
         Container(
-          width: 40,
-          height: 30,
-          child: Center(child: Text('D')),
+          width: 50,
+          height: 50,
+          child: Center(
+            child: Text(
+              'D',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
         ),
       ],
     );
