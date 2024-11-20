@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/station_list/station_list_page.dart';
 
+// 출발역 도착역 선택 위젯
+
 class StationSelection extends StatefulWidget {
   final Function(String, String) onStationSelected;
 

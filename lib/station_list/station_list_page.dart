@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// 출도착역 리스트
+
 class StationListPage extends StatelessWidget {
   final List<String> stationList = [
     '수서',
@@ -64,7 +66,6 @@ class StationListPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // 선택된 항목 반환
                   Navigator.pop(context, filteredStationList[index]);
                 },
                 dense: true,

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SeatChooseButton extends StatelessWidget {
+class BookingButton extends StatelessWidget {
   final int? selectedCol;
   final String? selectedRow;
 
-  SeatChooseButton(this.selectedCol, this.selectedRow); // 생성자에서 값을 받도록 설정
+  BookingButton(this.selectedCol, this.selectedRow); // 생성자에서 값을 받도록 설정
 
   @override
   Widget build(BuildContext context) {

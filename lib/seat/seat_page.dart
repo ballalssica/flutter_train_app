@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/seat/widgets/seat_choose.dart';
-import 'package:flutter_train_app/seat/widgets/seat_choose_button.dart';
+import 'package:flutter_train_app/seat/widgets/booking_button.dart';
 import 'package:flutter_train_app/seat/widgets/selected_station.dart';
 
 class SeatPage extends StatefulWidget {
@@ -50,7 +50,7 @@ class _SeatPageState extends State<SeatPage> {
               // 좌석 선택 - Callback 함수 추가
               SeatChoose(onSeatSelected: onSeatSelected),
               SizedBox(height: 16),
-              SeatChooseButton(selectedCol, selectedRow),
+              BookingButton(selectedCol, selectedRow),
             ],
           ),
         ),

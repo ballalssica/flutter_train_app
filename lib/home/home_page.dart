@@ -35,10 +35,10 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               StationSelection(
-                onStationSelected: updateStations, // 출발역과 도착역 선택값을 업데이트
-              ),
+                onStationSelected: updateStations,
+              ), //출발역과 도착역 선택
               SizedBox(height: 20),
-              SeatSelectionButton(
+              SeatSelectionButton( //좌석선택버튼
                 departureStation: selectedDepartureStation,
                 arrivalStation: selectedArrivalStation,
               ),
